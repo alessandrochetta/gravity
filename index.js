@@ -6,6 +6,7 @@ canvas.height = 567
 
 c.fillRect(0, 0, canvas.width, canvas.height)
 
+
 const satellites = [
     new Planet(
         {
@@ -46,33 +47,35 @@ const fixedPlanet = new Planet(
         attr: { r: 20, color: '#bdc3c7', mass: 1000 }
     })
 
-const drawGrid = ({ c, canvas }) => {
-    const x = canvas.width
-    const y = canvas.height
+const drawVerticalWarping = ({ c, warping, x, y, h }) => {
+    c.beginPath();
+    c.moveTo(x, 0);
+    c.bezierCurveTo(x, 0, x, 0, x, y - warping * 2);
+
+    c.bezierCurveTo(x, y - warping, x - warping, y - warping, x - warping, y);
+    c.bezierCurveTo(x - warping, y + warping, x, y + warping, x, y + warping * 2);
+
+    c.bezierCurveTo(x, h, x, h, x, h);
+    const verticalGradient = generateGradient(0, 0, 0, h, c) 
+    c.strokeStyle = verticalGradient;
+    c.stroke();
+}
+
+const drawGrid = ({ c, canvas, massCenter }) => {
+    const h = canvas.height
+    const w = canvas.width
+    const x = massCenter.x
+    const y = massCenter.y
     const warping = 50
 
-    c.beginPath();
-    c.moveTo(x / 2, 0);
-    c.bezierCurveTo(x / 2, y / 2 - warping, x / 2 - warping, y / 2 - warping, x / 2 - warping, y / 2);
-    c.bezierCurveTo(x / 2 - warping, y / 2 + warping, x / 2, y / 2 + warping, x / 2, y);
-    c.lineTo(x / 2, y);
-    var grad = c.createLinearGradient(0, 0, 0, y);
-    grad.addColorStop(0, "black");
-    grad.addColorStop(0.25, "#101010");
-    grad.addColorStop(0.5, "#383838");
-    grad.addColorStop(0.75, "#101010");
-    grad.addColorStop(1, "black");
-
-
-    c.strokeStyle = grad;
-    c.stroke();
+    drawVerticalWarping({ c, warping, x, y, h })
 }
 
 function animate() {
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
 
-    drawGrid({ c, canvas })
+    drawGrid({ c, canvas, massCenter: fixedPlanet.position })
 
     fixedPlanet.update({ g: { x: 0, y: 0 }, c })
 

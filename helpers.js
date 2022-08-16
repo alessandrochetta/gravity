@@ -14,3 +14,13 @@ const calculateGravity = function (p1, p2) {
 
     return projectedForce
 }
+
+const generateGradient = function (x0, y0, x1, y1, c) {
+    const gradient = c.createLinearGradient(x0, y0, x1, y1);
+    gradient.addColorStop(0, "black");
+    gradient.addColorStop(0.25, "#101010");
+    gradient.addColorStop(0.5, "#383838");
+    gradient.addColorStop(0.75, "#101010");
+    gradient.addColorStop(1, "black");
+    return gradient
+}
