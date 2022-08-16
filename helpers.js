@@ -12,6 +12,5 @@ const calculateGravity = function (p1, p2) {
         y: force * yProjection * -1
     }
 
-    console.log(projectedForce.x.toFixed(0), projectedForce.y.toFixed(0));
     return projectedForce
 }
