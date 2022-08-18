@@ -1,4 +1,4 @@
-class Planet {
+export class Planet {
     constructor({ position, velocity, attr, state }) {
         this.position = position
         this.velocity = velocity
