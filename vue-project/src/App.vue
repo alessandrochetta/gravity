@@ -3,7 +3,6 @@ import Overview from './components/Overview.vue'
 import { Planet } from './lib/Planet'
 import { getDefaultPlanets } from './resources/defaultPlanets'
 import SpaceCanvas from './components/SpaceCanvas.vue'
-import { stringify } from 'querystring'
 
 export default {
   data() {
