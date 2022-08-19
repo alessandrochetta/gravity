@@ -49,7 +49,8 @@ export default {
 <style scoped lang="scss">
 .overview {
   position: absolute;
-  top: 5px;
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
   display: flex;
   flex-direction: column;

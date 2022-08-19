@@ -3,6 +3,24 @@ import { Planet } from '../lib/Planet'
 const defaultPlanets1 = [
     new Planet(
         {
+            position: { x: (dimension) => (dimension / 2) + 120, y: (dimension) => (dimension / 2) - 140 },
+            velocity: { x: -1, y: -2 },
+            attr: { r: 3, color: '#e15f41', name: 'Amalthea' },
+            state: 'running',
+            id: 2,
+            mass: 1
+        }),
+        new Planet(
+            {
+                position: { x: (dimension) => (dimension / 2) - 330, y: (dimension) => (dimension / 2) },
+                velocity: { x: 0, y: 1.4 },
+                attr: { r: 10, color: '#e77f67', name: 'Callisto' },
+                state: 'running',
+                id: 4,
+                mass: 1
+            }),
+    new Planet(
+        {
             position: { x: (dimension) => (dimension / 2) + 100, y: (dimension) => (dimension / 2) - 100 },
             velocity: { x: 0, y: -2 },
             attr: { r: 5, color: '#7f8c8d', name: 'Europa' },
@@ -19,15 +37,7 @@ const defaultPlanets1 = [
             id: 1,
             mass: 1
         }),
-    new Planet(
-        {
-            position: { x: (dimension) => (dimension / 2) + 120, y: (dimension) => (dimension / 2) - 140 },
-            velocity: { x: -1, y: -2 },
-            attr: { r: 3, color: '#e15f41', name: 'Amalthea' },
-            state: 'running',
-            id: 2,
-            mass: 1
-        }),
+
     new Planet(
         {
             position: { x: (dimension) => (dimension / 2) - 80, y: (dimension) => (dimension / 2) },
@@ -37,15 +47,7 @@ const defaultPlanets1 = [
             id: 3,
             mass: 1
         }),
-    new Planet(
-        {
-            position: { x: (dimension) => (dimension / 2) - 330, y: (dimension) => (dimension / 2) },
-            velocity: { x: 0, y: 1.4 },
-            attr: { r: 10, color: '#e77f67', name: 'Callisto' },
-            state: 'running',
-            id: 4,
-            mass: 1
-        }),
+ 
     new Planet(
         {
             position: { x: (dimension) => (dimension / 2), y: (dimension) => (dimension / 2) },
