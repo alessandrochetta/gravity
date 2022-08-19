@@ -24,7 +24,9 @@ export default {
       <div class="overview__slot-background"
         :style="{ 'background-color': `${planet.attr.color}33`, 'width': calculateVelocityPercentage(planet) }"></div>
       <div v-if="planet.attr.name" class="overview__slot-row">
-        <div>{{ planet.attr.name }}</div>
+        <div class="overview__slot-name">
+          {{ planet.attr.name }}
+        </div>
       </div>
       <div class="overview__slot-row">
         <div>x: {{ planet.position.x.toFixed(1) }} </div>
@@ -35,12 +37,8 @@ export default {
         <div>vy: {{ planet.velocity.y.toFixed(1) }}</div>
       </div>
       <div class="overview__slot-row">
-        <div>velocity </div>
-        <div>{{ planet.scalarVelocity.toFixed(1) }}</div>
-      </div>
-      <div class="overview__slot-row">
-        <div>mass </div>
-        <div>{{ planet.mass }}</div>
+        <div>|v|: {{ planet.scalarVelocity.toFixed(1) }} </div>
+        <div>mass: {{ planet.mass }}</div>
       </div>
     </div>
   </div>
@@ -81,6 +79,11 @@ export default {
     &>div {
       min-width: 60px;
     }
+  }
+
+  &__slot-name {
+    font-weight: 900;
+    text-align: center;
   }
 }
 </style>
