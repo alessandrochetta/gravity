@@ -1,8 +1,18 @@
 export const calculateGravity = function (p1, p2) {
+    if (!p1) {
+        return { x: 0, y: 0 }
+    }
+    let p1Mass = p1.mass
+    if (!p1Mass) { p1Mass = 0 }
+
+    let p2Mass = p2.mass
+    if (!p2Mass) { p2Mass = 0 }
+
     const distanceCoordinates = { x: p2.position.x - p1.position.x, y: p2.position.y - p1.position.y }
     let distance = Math.sqrt(Math.pow(distanceCoordinates.x, 2) + Math.pow(distanceCoordinates.y, 2))
-
-    const force = p1.attr.mass * p2.attr.mass / (distance * distance)
+   
+    
+    let force = p1Mass * p2Mass / (distance * distance)
 
     const xProjection = (distanceCoordinates.x / (Math.abs(distanceCoordinates.y) + Math.abs(distanceCoordinates.x)))
     const yProjection = (distanceCoordinates.y / (Math.abs(distanceCoordinates.x) + Math.abs(distanceCoordinates.y)))
@@ -35,11 +45,11 @@ const drawHorizontalWarping = ({ c, massCenter, y, w }) => {
         warping = 30 * (30 / distanceFromMassCenter)
     }
 
-    if(distanceFromMassCenter > 100) {
+    if (distanceFromMassCenter > 100) {
         warping = 0
     }
 
-    if(warping > 30) {
+    if (warping > 30) {
         warping = 30
     }
 
@@ -68,11 +78,11 @@ const drawVerticalWarping = ({ c, massCenter, x, h }) => {
         warping = 30 * (30 / distanceFromMassCenter)
     }
 
-    if(distanceFromMassCenter > 100) {
+    if (distanceFromMassCenter > 100) {
         warping = 0
     }
 
-    if(warping > 30) {
+    if (warping > 30) {
         warping = 30
     }
 

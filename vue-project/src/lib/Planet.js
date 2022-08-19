@@ -1,9 +1,13 @@
 export class Planet {
-    constructor({ position, velocity, attr, state }) {
+    constructor({ position, velocity, attr, state, id, mass }) {
         this.position = position
         this.velocity = velocity
         this.attr = attr
         this.state = state
+        this.id = id
+        this.maxVelocity = 0
+        this.scalarVelocity = 0
+        this.mass = mass
     }
 
     draw(c) {
@@ -14,10 +18,18 @@ export class Planet {
     }
 
     update({ g, c }) {
-        this.draw(c)
-        this.velocity.y += g.y/this.attr.mass
-        this.velocity.x += g.x/this.attr.mass
+
+        this.velocity.y += g.y
+        this.velocity.x += g.x
         this.position.y += this.velocity.y
         this.position.x += this.velocity.x
+
+        this.scalarVelocity = Math.sqrt(Math.pow(this.velocity.y, 2) + Math.pow(this.velocity.x, 2))
+
+        if (this.scalarVelocity > this.maxVelocity) {
+            this.maxVelocity = this.scalarVelocity
+        }
+
+        this.draw(c)
     }
 }
